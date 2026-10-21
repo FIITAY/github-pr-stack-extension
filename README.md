@@ -4,6 +4,14 @@ A Chrome extension that groups stacked pull requests in the GitHub PR list into 
 
 Not affiliated with or endorsed by GitHub.
 
+Before:
+
+![PR list without grouping](docs/before.png)
+
+After:
+
+![PR list with stacked PRs grouped](docs/after.png)
+
 A PR whose base branch is another PR's head branch is treated as part of that PR's stack. The stack shows as one row under its root PR; click the chevron to expand it.
 
 ## Install
