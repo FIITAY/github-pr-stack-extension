@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "PR Stack Grouping for GitHub",
+  "version": "0.1.0",
+  "minimum_chrome_version": "102",
+  "homepage_url": "https://github.com/FIITAY/github-pr-stack-extension",
+  "description": "Groups stacked pull requests in the GitHub PR list into one expandable row.",
+  "permissions": ["storage"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "PR Stack Grouping",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_start"
+    }
+  ]
+}

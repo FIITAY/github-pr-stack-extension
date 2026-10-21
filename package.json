@@ -1,0 +1,17 @@
+{
+  "name": "github-pr-stack-extension",
+  "version": "0.1.0",
+  "description": "Chrome extension that groups stacked pull requests in the GitHub PR list into one expandable row.",
+  "private": true,
+  "license": "MIT",
+  "author": "Itay Finci",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FIITAY/github-pr-stack-extension.git"
+  },
+  "homepage": "https://github.com/FIITAY/github-pr-stack-extension",
+  "bugs": "https://github.com/FIITAY/github-pr-stack-extension/issues",
+  "scripts": {
+    "package": "mkdir -p dist && zip -r dist/github-pr-stack-extension.zip manifest.json background.js content.js content.css popup.html popup.js popup.css icons"
+  }
+}

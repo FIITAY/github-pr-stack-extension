@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PR Stack Grouping</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="icons/icon32.png" width="20" height="20" alt="" />
+      <h1>PR Stack Grouping</h1>
+    </header>
+    <label class="row">
+      <span class="text">
+        <span class="title">Group stacked PRs</span>
+        <span class="hint">PRs whose base branch is another PR's branch are shown as one expandable row in the pull request list.</span>
+      </span>
+      <input id="enabled" type="checkbox" role="switch" />
+      <span class="switch" aria-hidden="true"></span>
+    </label>
+    <p id="status" class="status"></p>
+    <script src="popup.js"></script>
+  </body>
+</html>

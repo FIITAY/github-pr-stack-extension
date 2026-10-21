@@ -1,0 +1,155 @@
+ul[data-prstack-list] {
+  display: flex !important;
+  flex-direction: column;
+  --prstack-accent: var(--fgColor-accent, #0969da);
+  --prstack-accent-muted: var(--borderColor-accent-muted, rgba(84, 174, 255, 0.4));
+  --prstack-root-bg: var(--bgColor-accent-muted, rgba(84, 174, 255, 0.12));
+  --prstack-member-bg: color-mix(in srgb, var(--prstack-root-bg) 45%, transparent);
+  --prstack-muted: var(--fgColor-muted, #59636e);
+  --prstack-border: var(--borderColor-default, #d1d9e0);
+}
+
+ul[data-prstack-list] > li[data-prstack] {
+  position: relative;
+  box-shadow: inset 3px 0 0 var(--prstack-accent);
+}
+
+ul[data-prstack-list] > li[data-prstack="root"] {
+  background: var(--prstack-root-bg);
+}
+
+ul[data-prstack-list] > li[data-prstack="member"] {
+  background: var(--prstack-member-bg);
+  padding-left: 28px;
+}
+
+ul[data-prstack-list] > li[data-prstack-hidden] {
+  display: none !important;
+}
+
+/* Timeline connecting the PRs of an expanded stack. */
+ul[data-prstack-list] > li[data-prstack="member"]::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--prstack-accent-muted);
+}
+
+ul[data-prstack-list] > li[data-prstack="member"][data-prstack-last]::before {
+  bottom: 50%;
+}
+
+ul[data-prstack-list] > li[data-prstack="member"]::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: calc(50% - 5px);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 2px solid var(--prstack-accent);
+  background: var(--bgColor-default, #fff);
+}
+
+.prstack-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 0 4px 0 -4px;
+  padding: 0;
+  vertical-align: middle;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--prstack-muted);
+  cursor: pointer;
+}
+
+.prstack-chevron:hover {
+  background: var(--control-transparent-bgColor-hover, rgba(129, 139, 152, 0.15));
+  color: var(--prstack-accent);
+}
+
+.prstack-chevron svg {
+  transition: transform 120ms ease;
+}
+
+.prstack-chevron[aria-expanded="true"] svg {
+  transform: rotate(90deg);
+}
+
+/* Basis 0 keeps the chain on the metadata line; chips shrink instead of wrapping. */
+.prstack-chain {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  padding-left: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 12px;
+  color: var(--prstack-muted);
+}
+
+.prstack-chain-lead,
+.prstack-chain-sep {
+  flex: none;
+  color: var(--prstack-muted);
+}
+
+li[data-prstack-open] .prstack-chain {
+  display: none;
+}
+
+.prstack-chain-item {
+  flex: 0 1 auto;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 260px;
+  padding: 1px 8px;
+  border: 1px solid var(--prstack-border);
+  border-radius: 6px;
+  background: var(--bgColor-default, #fff);
+  color: var(--fgColor-default, #1f2328);
+  text-decoration: none;
+}
+
+.prstack-chain-item:hover {
+  border-color: var(--prstack-accent);
+  text-decoration: none;
+}
+
+.prstack-chain-number {
+  flex: none;
+  color: var(--prstack-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.prstack-chain-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prstack-position {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 18px;
+  vertical-align: middle;
+  border-radius: 999px;
+  background: var(--prstack-root-bg);
+  color: var(--prstack-accent);
+  font-variant-numeric: tabular-nums;
+}
